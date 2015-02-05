@@ -17,12 +17,16 @@
 #include <string>
 using namespace std;
 
-const int SIZE = 10;
-int i = 0;
+
 struct Vectors{
 double x,y,z;
 string vectorName;
 };
+
+/**********************************************/
+/*******Function to add vectors***************/
+/*vectouput = (vect1a+vect2a)(vect1b+vect2b)*/
+/*******************************************/
 void addVectors()
 {
 	Vectors addVectA, addVectB, outputVect;
@@ -38,6 +42,10 @@ void addVectors()
 	cout<<"The value for " << outputVect.vectorName <<" is equal to ("<<outputVect.x<<" , "<<outputVect.y<<")"<<endl;
 	
 }
+/***************************************************/
+/*******Function to subtract vectors***************/
+/*vectouput = (vect1a-vect2a)(vect1b-vect2b)******/
+/************************************************/
 void subtractVectors()
 {
 	Vectors subVectA, subVectB, outputVect;
@@ -52,6 +60,10 @@ void subtractVectors()
 	outputVect.vectorName = "Output Vector";
 	cout<<"The value for " << outputVect.vectorName <<" is equal to ("<<outputVect.x<<" , "<<outputVect.y<<")"<<endl;
 }
+/***************************************************/
+/*******Function to multiply vectors***************/
+/*vectouput = (scalar*vect1a)(scalar-vect1b)******/
+/************************************************/
 void multiplyVectors()
 {
 	Vectors multVectA,outputVect;
@@ -64,6 +76,10 @@ void multiplyVectors()
 	outputVect.vectorName = "Output Vector";
 	cout<<"The value for " << outputVect.vectorName <<" is equal to ("<<outputVect.x<<" , "<<outputVect.y<<")"<<endl;
 }
+/***************************************************/
+/*******Function to scalar vectors*****************/
+/*vectouput = (vect1a*vect2a)+(vect1b*vect2b)*****/
+/************************************************/
 void scalarFunc()
 {
 	Vectors subVectA, subVectB, outputVect, scalarVect;
@@ -79,9 +95,13 @@ void scalarFunc()
 	outputVect.vectorName = "Output Vector";
 	cout<<"The value for " << outputVect.vectorName <<" is equal to ("<<scalarVect.x<<")"<<endl;
 }
+/***************************************************/
+/*******Function to calculate magnatude************/
+/*vectouput = (vect1a^2)+(vect1b^2)^0.5***********/
+/************************************************/
 void magnitudeFunc()
 {
-		Vectors addVectA, outputVect;
+	Vectors addVectA, outputVect;
 	addVectA.x = 4.0;
 	addVectA.y = 9.0;
 	addVectA.vectorName = "Vector 1";
