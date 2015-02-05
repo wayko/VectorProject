@@ -17,105 +17,34 @@
 #include <string>
 using namespace std;
 
-
+/*******************************/
+/****Structure Declaration*****/
+/*****************************/
 struct Vectors{
 double x,y,z;
 string vectorName;
 };
+/*******************************/
+/****Prototype Declaration*****/
+/*****************************/
+void addVectors(Vectors, Vectors, Vectors);
+void subtractVectors(Vectors, Vectors, Vectors);
+void multiplyVectors(Vectors,Vectors, double);
+void scalarFunc(Vectors , Vectors , Vectors);
+void magnitudeFunc(Vectors, Vectors);
+void outputFunc();
 
-/**********************************************/
-/*******Function to add vectors***************/
-/*vectouput = (vect1a+vect2a)(vect1b+vect2b)*/
-/*******************************************/
-void addVectors()
-{
-	Vectors addVectA, addVectB, outputVect;
-	addVectA.x = 4.0;
-	addVectA.y = 9.0;
-	addVectA.vectorName = "Vector 1";
-	addVectB.x = 3.0;
-	addVectB.y = -1.0;
-	addVectA.vectorName = "Vector 2";
-	outputVect.x = addVectA.x + addVectB.x;
-	outputVect.y = addVectA.y + addVectB.y;
-	outputVect.vectorName = "Output Vector";
-	cout<<"The value for " << outputVect.vectorName <<" is equal to ("<<outputVect.x<<" , "<<outputVect.y<<")"<<endl;
-	
-}
-/***************************************************/
-/*******Function to subtract vectors***************/
-/*vectouput = (vect1a-vect2a)(vect1b-vect2b)******/
-/************************************************/
-void subtractVectors()
-{
-	Vectors subVectA, subVectB, outputVect;
-	subVectA.x = 4.0;
-	subVectA.y = 9.0;
-	subVectA.vectorName = "Vector 1";
-	subVectB.x = 3.0;
-	subVectB.y = -1.0;
-	subVectA.vectorName = "Vector 2";
-	outputVect.x = subVectA.x - subVectB.x;
-	outputVect.y = subVectA.y - subVectB.y;
-	outputVect.vectorName = "Output Vector";
-	cout<<"The value for " << outputVect.vectorName <<" is equal to ("<<outputVect.x<<" , "<<outputVect.y<<")"<<endl;
-}
-/***************************************************/
-/*******Function to multiply vectors***************/
-/*vectouput = (scalar*vect1a)(scalar-vect1b)******/
-/************************************************/
-void multiplyVectors()
-{
-	Vectors multVectA,outputVect;
-	double scalar = 10.0;
-	multVectA.x = 4.0;
-	multVectA.y = 9.0;
-	multVectA.vectorName = "Vector 1";
-	outputVect.x = scalar * multVectA.x;
-	outputVect.y = scalar * multVectA.y;
-	outputVect.vectorName = "Output Vector";
-	cout<<"The value for " << outputVect.vectorName <<" is equal to ("<<outputVect.x<<" , "<<outputVect.y<<")"<<endl;
-}
-/***************************************************/
-/*******Function to scalar vectors*****************/
-/*vectouput = (vect1a*vect2a)+(vect1b*vect2b)*****/
-/************************************************/
-void scalarFunc()
-{
-	Vectors subVectA, subVectB, outputVect, scalarVect;
-	subVectA.x = 4.0;
-	subVectA.y = 9.0;
-	subVectA.vectorName = "Vector 1";
-	subVectB.x = 3.0;
-	subVectB.y = -1.0;
-	subVectA.vectorName = "Vector 2";
-	outputVect.x = subVectA.x * subVectB.x;
-	outputVect.y = subVectA.y * subVectB.y;
-	scalarVect.x = outputVect.x + outputVect.y;
-	outputVect.vectorName = "Output Vector";
-	cout<<"The value for " << outputVect.vectorName <<" is equal to ("<<scalarVect.x<<")"<<endl;
-}
-/***************************************************/
-/*******Function to calculate magnatude************/
-/*vectouput = (vect1a^2)+(vect1b^2)^0.5***********/
-/************************************************/
-void magnitudeFunc()
-{
-	Vectors addVectA, outputVect;
-	addVectA.x = 4.0;
-	addVectA.y = 9.0;
-	addVectA.vectorName = "Vector 1";
-	outputVect.x = pow(pow(addVectA.x,2.0) + pow(addVectA.y,2.0),0.5);
-	outputVect.vectorName = "Output Vector";
-	cout<<"The value for " << outputVect.vectorName <<" is equal to ("<<abs(outputVect.x)<<")"<<endl;
-}
-void outputFunc()
-{
-	cout<<"output"<<endl;
-}
 int main() 
 {
 	char mathOperation, done;
+	Vectors vectorA,vectorB, outputVect;
+	vectorA.x = 4.0;
+	vectorA.y = 9.0;
+	vectorA.vectorName = "Vector 1";
+	vectorB.x = 3.0;
+	vectorB.y = -1.0;
+	vectorB.vectorName = "Vector 2";
+	double scalar = 10.0;
 	do
 	{
 		cout<<"Please select a math operation"<<endl<<"1 - Addition"<<endl<<"2 - Subtraction"<<endl<<"3 - Multiplication"<<endl<<"4 - Scalar"<<endl<<"5 - Magnitude"<<endl<<"Input > ";
@@ -123,27 +52,27 @@ int main()
 		switch(mathOperation)
 		{
 			case '1':
-			addVectors();
+			addVectors(vectorA,vectorB,outputVect);
 			outputFunc();
 			break;
 			case '2':
-			subtractVectors();
+			subtractVectors(vectorA,vectorB,outputVect);
 			outputFunc();
 			break;
 			case '3':
-			multiplyVectors();
+			multiplyVectors(vectorA, outputVect, scalar);
 			outputFunc();
 			break;
 			case '4':
-			scalarFunc();
+			scalarFunc(vectorA,vectorB,outputVect);
 			outputFunc();
 			break;
 			case '5':
-			magnitudeFunc();
+			magnitudeFunc(vectorA, outputVect);
 			outputFunc();
 			break;
 			default:
-			addVectors();
+			addVectors(vectorA,vectorB,outputVect);
 			outputFunc();
 		}
 		cout << "Do another operation: ";
@@ -155,3 +84,69 @@ int main()
 	return 0;
 }
 
+/**********************************************/
+/*******Function to add vectors***************/
+/*vectouput = (vect1a+vect2a)(vect1b+vect2b)*/
+/*******************************************/
+void addVectors(Vectors addVectA, Vectors addVectB, Vectors outputVect)
+{
+	outputVect.x = addVectA.x + addVectB.x;
+	outputVect.y = addVectA.y + addVectB.y;
+	outputVect.vectorName = "Output Vector";
+	cout<<"The value for " << outputVect.vectorName <<" is equal to ("<<outputVect.x<<" , "<<outputVect.y<<")"<<endl;	
+}
+
+/***************************************************/
+/*******Function to subtract vectors***************/
+/*vectouput = (vect1a-vect2a)(vect1b-vect2b)******/
+/************************************************/
+void subtractVectors(Vectors subVectA, Vectors subVectB, Vectors outputVect)
+{
+	outputVect.x = subVectA.x - subVectB.x;
+	outputVect.y = subVectA.y - subVectB.y;
+	outputVect.vectorName = "Output Vector";
+	cout<<"The value for " << outputVect.vectorName <<" is equal to ("<<outputVect.x<<" , "<<outputVect.y<<")"<<endl;
+}
+
+/***************************************************/
+/*******Function to multiply vectors***************/
+/*vectouput = (scalar*vect1a)(scalar-vect1b)******/
+/************************************************/
+void multiplyVectors(Vectors multVectA,Vectors outputVect, double scalar)
+{
+	outputVect.x = scalar * multVectA.x;
+	outputVect.y = scalar * multVectA.y;
+	outputVect.vectorName = "Output Vector";
+	cout<<"The value for " << outputVect.vectorName <<" is equal to ("<<outputVect.x<<" , "<<outputVect.y<<")"<<endl;
+}
+
+/***************************************************/
+/*******Function to scalar vectors*****************/
+/*vectouput = (vect1a*vect2a)+(vect1b*vect2b)*****/
+/************************************************/
+void scalarFunc(Vectors scalarVectA, Vectors scalarVectB, Vectors outputVect)
+{
+	Vectors  scalarVect;
+	outputVect.x = scalarVectA.x * scalarVectB.x;
+	outputVect.y = scalarVectA.y * scalarVectB.y;
+	scalarVect.x = outputVect.x + outputVect.y;
+	outputVect.vectorName = "Output Vector";
+	cout<<"The value for " << outputVect.vectorName <<" is equal to ("<<scalarVect.x<<")"<<endl;
+}
+
+/***************************************************/
+/*******Function to calculate magnatude************/
+/*vectouput = (vect1a^2)+(vect1b^2)^0.5***********/
+/************************************************/
+void magnitudeFunc(Vectors addVectA, Vectors outputVect)
+{
+	
+	addVectA.vectorName = "Vector 1";
+	outputVect.x = pow(pow(addVectA.x,2.0) + pow(addVectA.y,2.0),0.5);
+	outputVect.vectorName = "Output Vector";
+	cout<<"The value for " << outputVect.vectorName <<" is equal to ("<<abs(outputVect.x)<<")"<<endl;
+}
+void outputFunc()
+{
+	cout<<"output"<<endl;
+}
