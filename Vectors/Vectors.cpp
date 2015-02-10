@@ -53,27 +53,21 @@ int main()
 		{
 			case '1':
 			addVectors(vectorA,vectorB,outputVect);
-			outputFunc();
 			break;
 			case '2':
 			subtractVectors(vectorA,vectorB,outputVect);
-			outputFunc();
 			break;
 			case '3':
 			multiplyVectors(vectorA, outputVect, scalar);
-			outputFunc();
 			break;
 			case '4':
 			scalarFunc(vectorA,vectorB,outputVect);
-			outputFunc();
 			break;
 			case '5':
 			magnitudeFunc(vectorA, outputVect);
-			outputFunc();
 			break;
 			default:
 			addVectors(vectorA,vectorB,outputVect);
-			outputFunc();
 		}
 		cout << "Do another operation: ";
 		cin >> done;
@@ -144,9 +138,7 @@ void magnitudeFunc(Vectors addVectA, Vectors outputVect)
 	addVectA.vectorName = "Vector 1";
 	outputVect.x = pow(pow(addVectA.x,2.0) + pow(addVectA.y,2.0),0.5);
 	outputVect.vectorName = "Output Vector";
-	cout<<"The value for " << outputVect.vectorName <<" is equal to ("<<abs(outputVect.x)<<")"<<endl;
+	outputVect.x = abs(outputVect.x);
+	cout<<"The value for " << outputVect.vectorName <<" is equal to ("<<scalarVect.x<<")"<<endl;
 }
-void outputFunc()
-{
-	cout<<"output"<<endl;
-}
+
